@@ -1,4 +1,9 @@
 /*
+Himanshu Rana 
+4/4/21 
+
+Visual Arts and Technology II 
+Mask 
 
 SEE ALSO
 + https://github.com/tensorflow/tfjs-models/tree/
@@ -83,10 +88,6 @@ function draw() {
     //   circle(pt.x, pt.y, 3);
     // }
 
-    // amazing, but probably information overload
-    // we can also use the 'annotations' section to get
-    // facial features...
-
     //silhouette
     fill(76, 185, 202, 200);
     noStroke();
@@ -97,8 +98,9 @@ function draw() {
     }
     endShape(CLOSE);
 
+    //feather crown on top of head
+    //split into two parts (left and right side of head)
     let featherPoints1 = [ 0, 1, 2, 3, 4, 5];
-    // 21, 54, 103, 67, 109, 10, 338, 297, 332, 284, 251, 389
     peacock.resize(140, 140); 
   
     for(let i of featherPoints1) {
@@ -115,7 +117,6 @@ function draw() {
         let pt = face.annotations.silhouette[i]; 
         pt = scalePoint(pt); 
         fill(0); 
-        //circle(pt.x, pt.y, 10); 
         image(peacock_rev, pt.x - 75, pt.y - 100); 
     }
 
@@ -131,6 +132,8 @@ function draw() {
     image(right_ear, ptRE.x - 10, ptRE.y - 40); 
 
     //nose
+    //getting point on the mesh for nose 
+    //resizing to make longer 
     let nose = face.scaledMesh[5]; 
     nose = scalePoint(nose); 
     trunk.resize(80, 170); 
@@ -139,6 +142,7 @@ function draw() {
     //eyes 
     fill(255);
     stroke(1);  
+    //getting each point on the scaled mesh for the eyes 
     let pt1 = face.scaledMesh[224]; 
     pt1 = scalePoint(pt1); 
     let pt2 = face.scaledMesh[196]; 
@@ -154,62 +158,9 @@ function draw() {
     pt5 = scalePoint(pt5); 
     let pt6 = face.scaledMesh[454]; 
     pt6 = scalePoint(pt6); 
+
     triangle(pt4.x, pt4.y, pt5.x, pt5.y, pt6.x, pt6.y); 
 
-
-
-    // for(let i of leftEye) {
-    //     let pt = face.mesh[i]; 
-    //     pt = scalePoint(pt); 
-    //     fill(255, 0, 0, 100); 
-    //     triangle()
-    // }
-    // eyes
-    // first, let's use the iris position as the center
-    // let leftEye =  scalePoint(face.annotations.leftEyeIris[0]);
-    // let rightEye = scalePoint(face.annotations.rightEyeIris[0]);
-
-    // then use the face's overall bounding box to scale them
-    // let topLeft =     scalePoint(face.boundingBox.topLeft);
-    // let bottomRight = scalePoint(face.boundingBox.bottomRight);
-    // let w = bottomRight.x - topLeft.x;
-    // let dia = w / 6;
-
-    // fill(255);
-    // noStroke();
-    // circle(leftEye.x,  leftEye.y,  dia);
-    // circle(rightEye.x, rightEye.y, dia);
-
-    // the mouth is split into four parts: the top/bottom
-    // and their inner/outer lips – to use these to make a 
-    // shape, we have to be a little creative
-    // let mouth = [];
-    // for (let pt of face.annotations.lipsUpperInner) {
-    //   pt = scalePoint(pt);
-    //   mouth.push(pt);
-    // }
-    // for (let pt of face.annotations.lipsLowerInner) {
-    //   pt = scalePoint(pt);
-    //   mouth.push(pt);
-    // }
-
-    // fill(50,0,0);
-    // noStroke();
-    // beginShape();
-    // for (let pt of mouth) {
-    //   vertex(pt.x, pt.y);
-    // }
-    // endShape(CLOSE);
-
-    // if necessary, you can also grab points directly
-    // from the mesh! (see the url at the top for an
-    // image showing all the point locations)
-    // let nose = scalePoint(face.scaledMesh[5]);
-    // for (let d=w/6; d>=2; d-=1) {
-    //   fill(255,150,0, map(d, w/6,2, 0,255));
-    //   noStroke();
-    //   circle(nose.x, nose.y, d);
-    // }
   }
 }
 
@@ -234,4 +185,3 @@ async function getFace() {
     face = predictions[0];
   }
 }
-
