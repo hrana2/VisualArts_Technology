@@ -28,8 +28,8 @@ let firstFace = true;
 function preload() {
     peacock = loadImage('assets/peacock_feather.png'); 
     peacock_rev = loadImage('assets/peacock_feather_flip.png'); 
-    left_ear = loadImage('assets/left_ear.png'); 
-    right_ear = loadImage('assets/right_ear.png'); 
+    left_ear = loadImage('assets/real_ears_left.png'); 
+    right_ear = loadImage('assets/real_ears_right.png'); 
     trunk = loadImage('assets/trunk.png'); 
 }
 
@@ -97,45 +97,44 @@ function draw() {
     }
     endShape(CLOSE);
 
-    let featherPoints1 = [ 1, 2, 3, 4, 5];
+    let featherPoints1 = [ 0, 1, 2, 3, 4, 5];
     // 21, 54, 103, 67, 109, 10, 338, 297, 332, 284, 251, 389
-    peacock.resize(100, 100); 
+    peacock.resize(140, 140); 
   
     for(let i of featherPoints1) {
         let pt = face.annotations.silhouette[i]; 
         pt = scalePoint(pt); 
         fill(0); 
-        //circle(pt.x, pt.y, 10); 
-        image(peacock, pt.x - 50, pt.y - 70); 
+        image(peacock, pt.x - 75, pt.y - 100); 
     }
 
     let featherPoints2 = [31, 32, 33, 34, 35];
-    peacock_rev.resize(100, 100); 
+    peacock_rev.resize(140, 140); 
   
     for(let i of featherPoints2) {
         let pt = face.annotations.silhouette[i]; 
         pt = scalePoint(pt); 
         fill(0); 
         //circle(pt.x, pt.y, 10); 
-        image(peacock_rev, pt.x - 50, pt.y - 70); 
+        image(peacock_rev, pt.x - 75, pt.y - 100); 
     }
 
     //ears 
     let ptLE = face.scaledMesh[234]; 
     ptLE = scalePoint(ptLE); 
-    left_ear.resize(130, 130); 
-    image(left_ear, ptLE.x - 100, ptLE.y - 40); 
+    left_ear.resize(160, 160); 
+    image(left_ear, ptLE.x - 150, ptLE.y - 40); 
 
     let ptRE = face.scaledMesh[454]; 
     ptRE = scalePoint(ptRE); 
-    right_ear.resize(130, 130); 
-    image(right_ear, ptRE.x - 30, ptRE.y - 40); 
+    right_ear.resize(160, 160); 
+    image(right_ear, ptRE.x - 10, ptRE.y - 40); 
 
     //nose
     let nose = face.scaledMesh[5]; 
     nose = scalePoint(nose); 
-    trunk.resize(80, 100); 
-    image(trunk, nose.x - 40, nose.y); 
+    trunk.resize(80, 170); 
+    image(trunk, nose.x - 40, nose.y + 10); 
 
     //eyes 
     fill(255);
