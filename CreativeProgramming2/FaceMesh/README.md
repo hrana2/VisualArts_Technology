@@ -9,3 +9,5 @@
 #### Peacock feathers were used to symbolize the national bird of India and give a regal/royal feel to the mask 
 #### The elephant ears and trunk represent Ganesha, the most worshiped diety in Indian culture and abroad. 
 #### The elephant imagery also represents the West's consumption and knowledge of Indian culture. Many department or home good stores will have images of an elephant on various merchandise or tchotchkes to reference Indian culture. This mask is a way of representing that same idea. 
+
+[Screen recording of working mask](https://github.com/hrana2/VisualArts_Technology/blob/main/CreativeProgramming2/FaceMesh/assets/mask_video.mp4)
